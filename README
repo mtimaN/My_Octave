@@ -50,8 +50,3 @@ for square matrices with a size of `2^n`, `n` being a natural number.
 If the char scanned isn't `Q`, another char is scanned. If the char is 
 not in the list above, an error message is printed. If an int is scanned, 
 it is ignored.
-
-P.S:
-Darius Neatu said that using a white-space in the scanf format string is UB/ 
-bad practice but I couldn't find any explanation on the internet. Therefore, 
-I've decided to use printf(" %c", &c); for this assignment.
