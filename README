@@ -1,0 +1,57 @@
+## Copyright Mantu Matei 312CA 2022-2023
+# README tema02: My Octave
+
+## Description
+This program written in C implements some of the matrix functions featured in 
+GNU Octave.
+
+## What does it do?
+Firstly, it creates a dynamic array of matrices that will be used to save the 
+matrices received as input or created as result of a function. Two dynamic 
+arrays are also used in order to store the size of each matrix.
+A character is then read, signifying what operation will be executed:
+1. `L` - Load a matrix scanned from STDIN, together with its number of lines 
+and columns. The program doubles the allocated memory the array of matrices 
+every time it runs out.
+
+2. `D` - Followed by a number `i`, prints the size of the matrix on the `i`-th 
+position.
+
+3. `P` - Followed by a number `i`, prints the `i`-th matrix.
+
+4. `C` - Followed by `i`, crops the `i`-th matrix. It is implemented by 
+creating a copy of the matrix. The new number of columns and lines is read, 
+together with the indices of the columns and lines kept. The original matrix 
+is then overwritten with the requested values and then resized.
+
+5. `M` - Followed by two numbers `i` and `j`, multiply the two matrices using
+the naive approach and saves the result at the end of the matrix array.
+
+6. `O` - sorts the matrix array by sum of the each matrix' elements. Uses 
+bubble sort because it's a stable sorting algorithm that is easy to write.
+
+7. `T` - Followed by `i`, transposes the `i`-th matrix. Done by increasing
+the matrix' size, transposing the elements and then shrinking the matrix
+to the new size. (Unless it's a square matrix.)
+
+8. `R` - Followed by `i` and `pow`, raises the `i`-th matrix to the `pow`-th
+power using an algorithm similar to Fast Exponentiation Algorithm for numbers.
+
+9. `F` - Followed by `i`, deletes the `i`-th matrix from the matrix array. All
+matrices to the right are then shifted by one position to the left, done by 
+swapping the pointers. (In order to leave no gap in the array.) The program 
+then checks whether it could safely half the memory used for the matrix array.
+
+10. `Q` - Frees all memory used by the program and then exits the program.
+
+11. `S` - BONUS - Matrix Product using the Strassen Algorithm. Works only
+for square matrices with a size of `2^n`, `n` being a natural number. 
+
+If the char scanned isn't `Q`, another char is scanned. If the char is 
+not in the list above, an error message is printed. If an int is scanned, 
+it is ignored.
+
+P.S:
+Darius Neatu said that using a white-space in the scanf format string is UB/ 
+bad practice but I couldn't find any explanation on the internet. Therefore, 
+I've decided to use printf(" %c", &c); for this assignment.
